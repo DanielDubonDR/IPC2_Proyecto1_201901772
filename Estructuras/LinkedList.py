@@ -1,54 +1,70 @@
 class cliente:
-  def __init__(self, nombre, no_habitacion):
-    self.nombre = nombre
-    self.no_habitacion = no_habitacion
+    def __init__(self,id , nombre, no_habitacion):
+        self.id = id
+        self.nombre = nombre
+        self.no_habitacion = no_habitacion
+
+    def __str__(self):
+        String = str("id: ") + str(self.id) + str("\nNombre: ") + str(self.nombre) + str("\nHabitación No. ") + str(self.no_habitacion)+str("\n")
+        return String
 
 class node:
-  def __init__(self, cliente=None, next=None):
-    self.cliente = cliente
-    self.next = next
+    def __init__(self, dato=None, next=None):
+        self.dato = dato
+        self.next = next
+
+    def __str__(self):
+        return str(self.dato)+str("\n")
 
 class linked_list:
-  def __init__(self):
-    self.head = None
+    def __init__(self):
+        self.head = None
+        self.size = 0
 
-  def insertar(self, cliente):
-    if not self.head:
-      self.head = node(cliente=cliente)
-      return
-    current = self.head
-    while current.next:
-      current = current.next
-    current.next = node(cliente=cliente)
-  
-  def imprimir(self):
-    node = self.head
-    while node != None:
-      print(node.cliente.nombre, end = "=>")
-      node = node.next
-    
-  def eliminar(self, no_habitacion):
-    current = self.head
-    previous = None
+    def append(self, dato):
+        if not self.head:
+            self.head = node(dato=dato)
+            return
+        current = self.head
+        while current.next:
+            current = current.next
+        current.next = node(dato=dato)
+        self.size+=1
 
-    while current and current.cliente.no_habitacion != no_habitacion:
-      previous = current
-      current = current.next
-    if previous is None:
-      self.head =current.next
-    elif current:
-      previous.next = current.next
-      current.next = None
+    def iterar(self):
+        node = self.head
+        while node != None:
+            yield node
+            node = node.next
 
-c1 = cliente("Estuardo Zapeta", 101)
-c2 = cliente("Marco López", 103)
-c3 = cliente("Josué Armas", 204)
-c4 = cliente("Gladis Olmos", 302)
+    def __len__(self):
+        return self.contador
+
+    def __str__(self):
+        String = ""
+        node = self.head
+        while node != None:
+            String += str(node)
+            node = node.next
+        return String
+
+    def search(self, id):
+        current = self.head
+
+        while current and current.dato.id != id:
+            current = current.next
+        return current
+
+
+c1 = cliente(0,"Estuardo Zapeta", 101)
+c2 = cliente(1,"Marco López", 103)
+c3 = cliente(2,"Josué Armas", 204)
+c4 = cliente(3,"Gladis Olmos", 302)
 
 lista = linked_list()
-lista.insertar(c1)
-lista.insertar(c2)
-lista.insertar(c3)
-lista.insertar(c4)
+lista.append(c1)
+lista.append(c2)
+lista.append(c3)
+lista.append(c4)
 
-lista.imprimir()
+print(lista.search(3).dato.id)
