@@ -1,4 +1,4 @@
-class cliente:
+'''class cliente:
     def __init__(self,id , nombre, no_habitacion):
         self.id = id
         self.nombre = nombre
@@ -7,7 +7,7 @@ class cliente:
     def __str__(self):
         String = str("id: ") + str(self.id) + str("\nNombre: ") + str(self.nombre) + str("\nHabitación No. ") + str(self.no_habitacion)+str("\n")
         return String
-
+'''
 class node:
     def __init__(self, dato=None, next=None):
         self.dato = dato
@@ -55,7 +55,7 @@ class linked_list:
             current = current.next
         return current
 
-
+'''
 c1 = cliente(0,"Estuardo Zapeta", 101)
 c2 = cliente(1,"Marco López", 103)
 c3 = cliente(2,"Josué Armas", 204)
@@ -68,3 +68,4 @@ lista.append(c3)
 lista.append(c4)
 
 print(lista.search(3).dato.id)
+'''
