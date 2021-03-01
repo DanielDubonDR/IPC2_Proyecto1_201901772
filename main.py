@@ -1,10 +1,10 @@
 #-----------------------------------------------LIBRERIAS/MODULOS--------------------------------------------
-
+from LeerXML import Procesar
 #----------------------------------------------------CLASES--------------------------------------------------
 
 
 #----------------------------------------------VARIABLES GLOBALES--------------------------------------------
-ruta=""
+ruta="entrada1.xml"
 
 #-------------------------------------------------MENU-------------------------------------------------------
 def CargarArchivo():
@@ -28,14 +28,31 @@ def EscribirArchivo():
 
 def MostrarEstudiante():
     if ruta!="":
-        print("hacer algo")
+        print("\n-------------------------------DATOS DEL ESTUDIANTE-------------------------------\n")
+        print("  > Daniel Reginaldo Dubon Rodriguez")
+        print("  > 201901772")
+        print("  > Introduccion a la Progrmacion y Computacion 2 Seccion \"A\"")
+        print("  > Ingenieria en Ciencias y Sistemas")
+        print("  > 5to Semestre")
+        input("\n- PRESIONE ENTER PARA CONTINUAR...")
     else:
         print("  > ERROR: No se ha cargado ningún archivo")
         input("\n- PRESIONE ENTER PARA CONTINUAR...")
 
 def GenerarGrafica():
     if ruta!="":
-        print("hacer algo")
+        s = Procesar(ruta)
+        s.ObtenerCabeceras()
+        a = s.getCabeceras()
+        print(a)
+        '''
+        opcion=0
+        while opcion!=6:
+            print("\n------------------------------SELECCIONAR GRAFICA-----------------------------\n")
+            print(" 1. Cargar archivo")
+            print(" 6. Salir\n")
+            opcion=int(input("- Ingrese una opción:\n  > "))
+        '''
     else:
         print("  > ERROR: No se ha cargado ningún archivo")
         input("\n- PRESIONE ENTER PARA CONTINUAR...")
