@@ -30,6 +30,24 @@ class dato:
         String = str("Numero: ") + str(self.numero) + str("\nx: ") + str(self.x) + str("\ny: ") + str(self.y)+ str("\n")
         return String
 
+class l2:
+    def __init__(self, fila, dato):
+        self.fila=fila
+        self.dato = dato
+
+    def __str__(self):
+        String = str("Fila: ") + str(self.fila) + str("\nDato: ") + str(self.dato) + str("\n")
+        return String
+
+class l3:
+    def __init__(self, id, dato):
+        self.id = id
+        self.dato = dato
+
+    def __str__(self):
+        String = str("id: ") + str(self.id) + str("\nDato: ") + str(self.dato) + str("\n")
+        return String
+
 '''
 class lista:
     def __init__(self, id, lista):
@@ -70,12 +88,14 @@ def prueba():
                         aux = dato(dt.firstChild.data,(x+1),(y+1))
                         m1.append(aux)
                         cont += 1
-                    m2.append(m1)
-            listaPrueba.append(m2)
+                    aux1 = l2(x, m1)
+                    m2.append(aux1)
+            aux2 = l3(i, m2)
+            listaPrueba.append(aux2)
 
                         
 ObtenerCabeceras()
 print(cabeceras)
 
-for z in listaPrueba.iterar():
-    print(z.dato)
+s=listaPrueba.search(0)
+print(s)
