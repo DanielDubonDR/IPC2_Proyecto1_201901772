@@ -26,6 +26,7 @@ class linked_list:
     def append(self, dato):
         if not self.head:
             self.head = node(dato=dato)
+            self.size+=1
             return
         current = self.head
         while current.next:
@@ -40,7 +41,7 @@ class linked_list:
             node = node.next
 
     def __len__(self):
-        return self.contador
+        return self.size
 
     def __str__(self):
         String = ""

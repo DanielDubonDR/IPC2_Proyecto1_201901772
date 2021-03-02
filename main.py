@@ -44,15 +44,18 @@ def GenerarGrafica():
         s = Procesar(ruta)
         s.ObtenerCabeceras()
         a = s.getCabeceras()
-        print(a)
-        '''
+        z=len(a)+1
         opcion=0
-        while opcion!=6:
-            print("\n------------------------------SELECCIONAR GRAFICA-----------------------------\n")
-            print(" 1. Cargar archivo")
-            print(" 6. Salir\n")
+        while opcion!=z:
+            cont=0
+            String=""
+            print("\n------------------------------SELECCIONAR GRAFICA-----------------------------")
+            for i in a.iterar():
+                cont+=1
+                String+=str("\n ")+str(cont)+str(". ")+str(i.dato.nombreMatriz)
+            print(String)
+            print(" "+str(cont+1)+". Regresar\n")
             opcion=int(input("- Ingrese una opción:\n  > "))
-        '''
     else:
         print("  > ERROR: No se ha cargado ningún archivo")
         input("\n- PRESIONE ENTER PARA CONTINUAR...")
