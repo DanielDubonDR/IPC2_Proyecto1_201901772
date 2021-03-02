@@ -30,7 +30,7 @@ class Procesar:
     doc=None
     matrices=None
     cabeceras=None
-    ListaM=None
+    listaM=None
 
     def __init__(self, ruta):
         global doc
@@ -52,7 +52,6 @@ class Procesar:
             cabeceras.append(aux)
             contador += 1
         #print(cabeceras)
-        #prueba()
 
     def prueba(self):
         for matriz in matrices:
@@ -72,7 +71,8 @@ class Procesar:
                             aux = dato(i.dato.id,dt.firstChild.data,(x+1),(y+1))
                             listaM.append(aux)
                             cont += 1
-
+        #print(listaM)
+       
     '''
     iniciar()                        
     ObtenerCabeceras()
@@ -80,6 +80,9 @@ class Procesar:
 
     def getCabeceras(self):
         return cabeceras
+
+    def getLista(self):
+        return listaM
 
     
 

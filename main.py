@@ -1,5 +1,6 @@
 #-----------------------------------------------LIBRERIAS/MODULOS--------------------------------------------
 from LeerXML import Procesar
+from Funciones.Graficar import graficar
 #----------------------------------------------------CLASES--------------------------------------------------
 
 
@@ -44,18 +45,30 @@ def GenerarGrafica():
         s = Procesar(ruta)
         s.ObtenerCabeceras()
         a = s.getCabeceras()
+        s.prueba()
+        listaCircular=s.getLista()
         z=len(a)+1
         opcion=0
         while opcion!=z:
             cont=0
             String=""
-            print("\n------------------------------SELECCIONAR GRAFICA-----------------------------")
+            print("\n--------------------------------SELECCIONAR GRAFICA-------------------------------")
             for i in a.iterar():
                 cont+=1
                 String+=str("\n ")+str(cont)+str(". ")+str(i.dato.nombreMatriz)
             print(String)
             print(" "+str(cont+1)+". Regresar\n")
-            opcion=int(input("- Ingrese una opción:\n  > "))
+            try:
+                opcion=int(input("- Ingrese una opción:\n  > "))
+                if opcion>z or opcion<1:
+                    print("\n > Opción inválida...")
+                    input(" - PRESIONE ENTER PARA CONTINUAR...")
+                else:
+                    if opcion!=z:
+                        graficar(opcion,listaCircular,a)
+            except:
+                print("\n > Opción inválida...")
+                input(" - PRESIONE ENTER PARA CONTINUAR...")
     else:
         print("  > ERROR: No se ha cargado ningún archivo")
         input("\n- PRESIONE ENTER PARA CONTINUAR...")
