@@ -5,7 +5,7 @@ from Funciones.Graficar import graficar
 
 
 #----------------------------------------------VARIABLES GLOBALES--------------------------------------------
-ruta="entrada1.xml"
+ruta="entrada3.xml"
 
 #-------------------------------------------------MENU-------------------------------------------------------
 def CargarArchivo():
