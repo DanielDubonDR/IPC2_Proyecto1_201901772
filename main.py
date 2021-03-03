@@ -5,7 +5,7 @@ from Funciones.Graficar import graficar
 
 
 #----------------------------------------------VARIABLES GLOBALES--------------------------------------------
-ruta="entrada2.xml"
+ruta="entrada1.xml"
 
 #-------------------------------------------------MENU-------------------------------------------------------
 def CargarArchivo():
@@ -42,18 +42,18 @@ def MostrarEstudiante():
 
 def GenerarGrafica():
     if ruta!="":
-        s = Procesar(ruta)
-        s.ObtenerCabeceras()
-        a = s.getCabeceras()
-        s.extraerDatos()
-        listaCircular=s.getLista()
-        z=len(a)+1
+        archivo = Procesar(ruta)
+        archivo.ObtenerCabeceras()
+        cabeceras = archivo.getCabeceras()
+        archivo.extraerDatos()
+        listaCircular=archivo.getLista()
+        z=len(cabeceras)+1
         opcion=0
         while opcion!=z:
             cont=0
             String=""
-            print("\n--------------------------------SELECCIONAR GRAFICA-------------------------------")
-            for i in a.iterar():
+            print("\n--------------------------------SELECCIONAR GRÁFICA-------------------------------")
+            for i in cabeceras.iterar():
                 cont+=1
                 String+=str("\n ")+str(cont)+str(". ")+str(i.dato.nombreMatriz)
             print(String)
@@ -65,7 +65,7 @@ def GenerarGrafica():
                     input(" - PRESIONE ENTER PARA CONTINUAR...")
                 else:
                     if opcion!=z:
-                        graficar(opcion,listaCircular,a)
+                        graficar(opcion,listaCircular,cabeceras)
             except:
                 print("\n > Opción inválida...")
                 input(" - PRESIONE ENTER PARA CONTINUAR...")

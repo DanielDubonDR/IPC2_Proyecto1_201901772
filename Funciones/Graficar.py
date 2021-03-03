@@ -49,5 +49,5 @@ def graficar(id, datos, cabeceras):
         dot.edge(str(cont),str(i.dato.numero+m))
 
     '''
-    print(dot.source)
+    #print(dot.source)
     dot.render('D://test-output/round-tble.gv', view=True, format="png")
