@@ -53,7 +53,7 @@ class Procesar:
             contador += 1
         #print(cabeceras)
 
-    def prueba(self):
+    def extraerDatos(self):
         for matriz in matrices:
             nombreMatriz=matriz.getAttribute("nombre")
             for i in cabeceras.iterar():
@@ -63,14 +63,13 @@ class Procesar:
                     m=matriz.getAttribute("m")
                     cantidad=int(n)*int(m)
                     cont=0
-                    for x in range(int(n)):
-                        for y in range(int(m)):
-                            #if cont==0:
-                                #listaM.append(i)
-                            dt = matriz.getElementsByTagName("dato")[cont]
-                            aux = dato(i.dato.id,dt.firstChild.data,(x+1),(y+1))
-                            listaM.append(aux)
-                            cont += 1
+                    for x in range(cantidad):
+                        dt = matriz.getElementsByTagName("dato")[cont]
+                        xx=dt.getAttribute("x")
+                        y=dt.getAttribute("y")
+                        aux = dato(i.dato.id,dt.firstChild.data,(xx),(y))
+                        listaM.append(aux)
+                        cont += 1
         #print(listaM)
        
     '''

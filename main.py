@@ -5,7 +5,7 @@ from Funciones.Graficar import graficar
 
 
 #----------------------------------------------VARIABLES GLOBALES--------------------------------------------
-ruta="entrada3.xml"
+ruta="entrada2.xml"
 
 #-------------------------------------------------MENU-------------------------------------------------------
 def CargarArchivo():
@@ -45,7 +45,7 @@ def GenerarGrafica():
         s = Procesar(ruta)
         s.ObtenerCabeceras()
         a = s.getCabeceras()
-        s.prueba()
+        s.extraerDatos()
         listaCircular=s.getLista()
         z=len(a)+1
         opcion=0
