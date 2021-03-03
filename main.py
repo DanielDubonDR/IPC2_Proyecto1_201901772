@@ -1,11 +1,11 @@
 #-----------------------------------------------LIBRERIAS/MODULOS--------------------------------------------
-from LeerXML import Procesar
+from LeerXML import Leer
 from Funciones.Graficar import graficar
 #----------------------------------------------------CLASES--------------------------------------------------
 
 
 #----------------------------------------------VARIABLES GLOBALES--------------------------------------------
-ruta="entrada1.xml"
+ruta="entrada3.xml"
 
 #-------------------------------------------------MENU-------------------------------------------------------
 def CargarArchivo():
@@ -42,7 +42,7 @@ def MostrarEstudiante():
 
 def GenerarGrafica():
     if ruta!="":
-        archivo = Procesar(ruta)
+        archivo = Leer(ruta)
         archivo.ObtenerCabeceras()
         cabeceras = archivo.getCabeceras()
         archivo.extraerDatos()

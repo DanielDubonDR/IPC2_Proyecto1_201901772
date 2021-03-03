@@ -26,7 +26,7 @@ class dato:
         String = str("id: ") + str(self.id)+ str("\nNumero: ") + str(self.numero) + str("\nx: ") + str(self.x) + str("\ny: ") + str(self.y)+ str("\n")
         return String
 
-class Procesar:
+class Leer:
     doc=None
     matrices=None
     cabeceras=None
