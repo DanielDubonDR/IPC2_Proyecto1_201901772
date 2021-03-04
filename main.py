@@ -23,7 +23,8 @@ def ProcesarArchivo():
         listaCircular=archivo.getLista()
         procesar=Procesar(listaCircular,cabeceras)
         procesar.obtenerPatronesAcceso()
-        procesar.imprimir()
+        procesar.buscar()
+        #procesar.imprimir()
     else:
         print("  > ERROR: No se ha cargado ningún archivo")
         input("\n- PRESIONE ENTER PARA CONTINUAR...")

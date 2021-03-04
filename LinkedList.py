@@ -58,6 +58,28 @@ class linked_list:
             current = current.next
         return current
 
+    def searchxy(self, id, x, y):
+        current = self.head
+
+        while current and int(current.dato.id)!=id and int(current.dato.x)!=x and int(current.dato.y)!=y:
+            current = current.next
+        return current
+
+    def searchxyz(self, id, x, y):
+        aux=True
+        aux2=None
+        node = self.head
+        while aux:
+            if int(node.dato.id)==id and int(node.dato.x)==x and int(node.dato.y)==y:
+                aux=False
+                aux2=node
+            elif node==None:
+                aux=False
+                aux=0
+            else:
+                node = node.next
+        return aux2
+
 '''
 c1 = cliente(0,"Estuardo Zapeta", 101)
 c2 = cliente(1,"Marco López", 103)

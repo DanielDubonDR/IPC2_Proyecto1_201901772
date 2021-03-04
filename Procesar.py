@@ -35,5 +35,12 @@ class Procesar:
                 cambio = 0
             aux = dato(i.dato.id,cambio,i.dato.x,i.dato.y)
             lista.append(aux)
-        
+
+    def buscar(self):
+        print(lista.searchxyz(2, 3 ,6))
+        '''
+        for i in lista.iterar():
+            if i.dato.id==0:
+                print(i)
+                '''
             
