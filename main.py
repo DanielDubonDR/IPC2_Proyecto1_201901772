@@ -1,6 +1,7 @@
 #-----------------------------------------------LIBRERIAS/MODULOS--------------------------------------------
 from LeerXML import Leer
 from Funciones.Graficar import graficar
+from Procesar import Procesar
 #----------------------------------------------------CLASES--------------------------------------------------
 
 
@@ -15,7 +16,14 @@ def CargarArchivo():
 
 def ProcesarArchivo():
     if ruta!="":
-        print("hacer algo")
+        archivo = Leer(ruta)
+        archivo.ObtenerCabeceras()
+        cabeceras = archivo.getCabeceras()
+        archivo.extraerDatos()
+        listaCircular=archivo.getLista()
+        procesar=Procesar(listaCircular,cabeceras)
+        procesar.obtenerPatronesAcceso()
+        procesar.imprimir()
     else:
         print("  > ERROR: No se ha cargado ningún archivo")
         input("\n- PRESIONE ENTER PARA CONTINUAR...")
