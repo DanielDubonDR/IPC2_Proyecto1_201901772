@@ -1,4 +1,5 @@
 from LinkedList import linked_list
+from Funciones.Graficar import graficar
 
 class dato:
     def __init__(self, id, numero, x, y):
@@ -23,6 +24,7 @@ class Procesar:
 
     def imprimir(self):
         print(lista)
+        graficar(1,lista, self.cabeceras)
 
     def obtenerPatronesAcceso(self):
         for i in self.datos.iterar():
