@@ -37,7 +37,24 @@ class Procesar:
             lista.append(aux)
 
     def buscar(self):
-        print(lista.searchxyz(2, 3 ,6))
+        #print(lista.searchxyz(2, 3 ,2))
+        ids=len(self.cabeceras)
+        for id in range(int(ids)):
+            
+            n=self.cabeceras.search(id).dato.n
+            m=self.cabeceras.search(id).dato.m
+            aux=int(n)+1
+            for i in range(1, int(n)):
+                cont=0
+                for j in range(1,aux-i):
+                    for mm in range(i,int(m)):
+                        if lista.searchxyz(id, i ,mm).dato.numero==lista.searchxyz(id, (j+i) ,mm).dato.numero:
+                            cont+=1
+                    if cont==int(m):
+                        print("se encontro coincidencias en ",i)
+
+
+
         '''
         for i in lista.iterar():
             if i.dato.id==0:
