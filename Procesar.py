@@ -12,15 +12,30 @@ class dato:
         String = str("id: ") + str(self.id)+ str("\nNumero: ") + str(self.numero) + str("\nx: ") + str(self.x) + str("\ny: ") + str(self.y)+ str("\n")
         return String
 
+class lsreducir:
+    def __init__(self, id, f1, f2):
+        self.id = id
+        self.f1 = f1
+        self.f2 = f2
+    
+    def __str__(self):
+        String = str("id: ") + str(self.id)+ str("\nf1: ") + str(self.f1) + str("\nf2: ") + str(self.f2)+  str("\n")
+        return String
+
+
 class Procesar:
 
     lista=None
+    listaf=None
 
     def __init__(self, datos, cabeceras):
         self.datos=datos
         self.cabeceras=cabeceras
         global lista
+        global listaf
         lista=linked_list()
+        listaf=linked_list()
+        
 
     def imprimir(self):
         print(lista)
@@ -56,8 +71,15 @@ class Procesar:
                             print(string)
                             '''         
                     if cont==int(m):
+                        '''
                         string = str("se encontro coincidencias en la matriz ")+str(id)+str(" filas ")+str(i)+str(" con ")+str(j+i)
                         print(string)
+                        '''
+                        aux1=lsreducir(id, i,(j+i))
+                        listaf.append(aux1)
+        for ad in listaf.iterar():
+            if ad.dato.id==0:
+                print(ad)
 
 
         '''
