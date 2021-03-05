@@ -77,9 +77,15 @@ class Procesar:
                         '''
                         aux1=lsreducir(id, i,(j+i))
                         listaf.append(aux1)
-        for ad in listaf.iterar():
-            if ad.dato.id==0:
-                print(ad)
+
+        idm=len(self.cabeceras)
+        '''
+        for idmatriz in range(idm):
+            for ad in listaf.iterar():
+                if ad.dato.id==idmatriz:
+        '''
+        #print(self.datos.searchxy(0,1,1))
+        print(listaf)
 
 
         '''

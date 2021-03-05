@@ -45,6 +45,21 @@ class linked_list_circular:
             node = node.next
             yield node
 
+    def searchxy(self, id, x, y):
+        aux=True
+        aux2=None
+        node = self.head
+        while aux:
+            if int(node.dato.id)==id and int(node.dato.x)==x and int(node.dato.y)==y:
+                aux=False
+                aux2=node
+            elif node==None:
+                aux=False
+                aux2=0
+            else:
+                node = node.next
+        return aux2
+
     def __len__(self):
         return self.size
 

@@ -75,7 +75,7 @@ class linked_list:
                 aux2=node
             elif node==None:
                 aux=False
-                aux=0
+                aux2=0
             else:
                 node = node.next
         return aux2
