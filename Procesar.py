@@ -45,14 +45,19 @@ class Procesar:
             m=self.cabeceras.search(id).dato.m
             aux=int(n)+1
             for i in range(1, int(n)):
-                cont=0
+                
                 for j in range(1,aux-i):
-                    for mm in range(i,int(m)):
-                        if lista.searchxyz(id, i ,mm).dato.numero==lista.searchxyz(id, (j+i) ,mm).dato.numero:
+                    cont=0
+                    for mm in range(1,int(m)+1):
+                        if int(lista.searchxyz(id, i ,mm).dato.numero)==int(lista.searchxyz(id, (j+i) ,mm).dato.numero):
                             cont+=1
+                            '''
+                            string = str("id ")+str(id)+str(" pares ") +str(i)+str(",")+str(mm)+str(" con ")+str(j+i)+str(",")+str(mm)
+                            print(string)
+                            '''         
                     if cont==int(m):
-                        print("se encontro coincidencias en ",i)
-
+                        string = str("se encontro coincidencias en la matriz ")+str(id)+str(" filas ")+str(i)+str(" con ")+str(j+i)
+                        print(string)
 
 
         '''
