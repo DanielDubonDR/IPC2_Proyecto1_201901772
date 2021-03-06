@@ -22,19 +22,31 @@ class lsreducir:
         String = str("id: ") + str(self.id)+ str("\nf1: ") + str(self.f1) + str("\nf2: ") + str(self.f2)+  str("\n")
         return String
 
+class frecuencias:
+    def __init__(self, id, grupo, frecuencia):
+        self.id = id
+        self.grupo = grupo
+        self.frecuencia = frecuencia
+    
+    def __str__(self):
+        String = str("id: ") + str(self.id)+ str("\ngrupo: ") + str(self.grupo) + str("\nfrecuencia: ") + str(self.frecuencia)+  str("\n")
+        return String
 
 class Procesar:
 
     lista=None
     listaf=None
+    listagrupos=None
 
     def __init__(self, datos, cabeceras):
         self.datos=datos
         self.cabeceras=cabeceras
         global lista
         global listaf
+        global listagrupos
         lista=linked_list()
         listaf=linked_list()
+        listagrupos=linked_list()
         
 
     def imprimir(self):
@@ -83,22 +95,40 @@ class Procesar:
                         '''
                         aux1=lsreducir(id, i,(j+i))
                         listaf.append(aux1)
+        #self.sumar()
+        self.gruposFrecuencias()
 
+    def sumar(self):
         idm=len(self.cabeceras)
-        '''
         for idmatriz in range(idm):
             for ad in listaf.iterar():
                 if ad.dato.id==idmatriz:
-                    #print(ad)
-                    print(self.datos.searchxy(idmatriz,ad.dato.f2,1))
-'''
+                    
+                    
+                    n=self.cabeceras.search(idmatriz).dato.n
+                    self.frecuencia(idmatriz, n, 3)
+                    #print(self.datos.searchxy(idmatriz,ad.dato.f2,1))
+
         #print(self.datos.searchxy(0,1,1))
-        print(listaf)
-
-
-        '''
-        for i in lista.iterar():
-            if i.dato.id==0:
+        #print(listaf)
+    def frecuencia(self, id, n, f):
+        c=0
+        for i in listaf.iterar():
+            if i.dato.id==id and int(i.dato.f1)==f:
+                c+=1
                 print(i)
-                '''
-            
+        st=str(" en ")+str(f)+str(" se repite ")+str(c)    
+        print(st)
+
+    def gruposFrecuencias(self):
+        idm=len(self.cabeceras)
+        for idmatriz in range(idm):
+            n=self.cabeceras.search(idmatriz).dato.n
+            for i in range(1,int(n)+1):
+                c=0
+                for ad in listaf.iterar():
+                    if int(ad.dato.id)==idmatriz and int(ad.dato.f1)==i: 
+                            c+=1
+                st=str("id ")+str(idmatriz)+str(" en ")+str(i)+str(" se repite ")+str(c)    
+                print(st)
+                    
