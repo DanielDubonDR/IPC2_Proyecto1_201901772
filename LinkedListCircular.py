@@ -53,9 +53,6 @@ class linked_list_circular:
             if int(node.dato.id)==id and int(node.dato.x)==x and int(node.dato.y)==y:
                 aux=False
                 aux2=node
-            elif node==None:
-                aux=False
-                aux2=0
             else:
                 node = node.next
         return aux2

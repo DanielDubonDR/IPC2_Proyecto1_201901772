@@ -60,7 +60,13 @@ class Procesar:
             m=self.cabeceras.search(id).dato.m
             aux=int(n)+1
             for i in range(1, int(n)):
-                
+                repetido=False
+                for v in listaf.iterar():
+                    if int(v.dato.f2)==i:
+                        repetido=True
+                        break
+                if repetido==True:
+                    continue
                 for j in range(1,aux-i):
                     cont=0
                     for mm in range(1,int(m)+1):
@@ -83,7 +89,9 @@ class Procesar:
         for idmatriz in range(idm):
             for ad in listaf.iterar():
                 if ad.dato.id==idmatriz:
-        '''
+                    #print(ad)
+                    print(self.datos.searchxy(idmatriz,ad.dato.f2,1))
+'''
         #print(self.datos.searchxy(0,1,1))
         print(listaf)
 
