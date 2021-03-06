@@ -51,7 +51,7 @@ class Procesar:
 
     def imprimir(self):
         print(lista)
-        graficar(1,lista, self.cabeceras)
+        graficar(2,lista, self.cabeceras)
 
     def obtenerPatronesAcceso(self):
         for i in self.datos.iterar():
@@ -72,13 +72,15 @@ class Procesar:
             m=self.cabeceras.search(id).dato.m
             aux=int(n)+1
             for i in range(1, int(n)):
+                agregarMismo=True
                 repetido=False
                 for v in listaf.iterar():
-                    if int(v.dato.f2)==i:
+                    if int(v.dato.f2)==i and int(v.dato.id==id):
                         repetido=True
                         break
                 if repetido==True:
                     continue
+                
                 for j in range(1,aux-i):
                     cont=0
                     for mm in range(1,int(m)+1):
@@ -93,10 +95,18 @@ class Procesar:
                         string = str("se encontro coincidencias en la matriz ")+str(id)+str(" filas ")+str(i)+str(" con ")+str(j+i)
                         print(string)
                         '''
+
+                        if agregarMismo==True:
+                            ags=lsreducir(id, i,i)
+                            listaf.append(ags)
+                            agregarMismo=False
+                    
                         aux1=lsreducir(id, i,(j+i))
                         listaf.append(aux1)
         #self.sumar()
         self.gruposFrecuencias()
+        #print(listaf)
+        
 
     def sumar(self):
         idm=len(self.cabeceras)
@@ -129,6 +139,9 @@ class Procesar:
                 for ad in listaf.iterar():
                     if int(ad.dato.id)==idmatriz and int(ad.dato.f1)==i: 
                             c+=1
-                st=str("id ")+str(idmatriz)+str(" en ")+str(i)+str(" se repite ")+str(c)    
-                print(st)
+                #st=str("id ")+str(idmatriz)+str(" en ")+str(i)+str(" se repite ")+str(c)    
+                #print(st)
+                aux=frecuencias(idmatriz,i,c)
+                listagrupos.append(aux)
+        print(listagrupos)        
                     

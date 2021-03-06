@@ -6,7 +6,7 @@ from Procesar import Procesar
 
 
 #----------------------------------------------VARIABLES GLOBALES--------------------------------------------
-ruta="entrada4.xml"
+ruta="entrada1.xml"
 
 #-------------------------------------------------MENU-------------------------------------------------------
 def CargarArchivo():
@@ -24,6 +24,7 @@ def ProcesarArchivo():
         procesar=Procesar(listaCircular,cabeceras)
         procesar.obtenerPatronesAcceso()
         procesar.buscar()
+        
         #procesar.imprimir()
     else:
         print("  > ERROR: No se ha cargado ningún archivo")
