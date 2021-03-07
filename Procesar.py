@@ -34,12 +34,24 @@ class frecuencias:
         String = str("id: ") + str(self.id)+ str("\ngrupo: ") + str(self.g)+ str("\nfila: ") + str(self.grupo) + str("\nfrecuencia: ") + str(self.frecuencia)+  str("\n")
         return String
 
+class reducir:
+    def __init__(self, id, g, x, y, numero):
+        self.id = id
+        self.g = g
+        self.x = x
+        self.y = y
+        self.numero = numero
+    
+    def __str__(self):
+        String = str("id: ") + str(self.id)+ str("\ngrupo: ") + str(self.g)+ str("\nx: ") + str(self.x) + str("\ny: ") + str(self.y)+ str("\nnumero: ") + str(self.numero)+  str("\n")
+        return String
+
 class Procesar:
 
     lista=None
     listaf=None
     listagrupos=None
-    listaPrevSuma=None
+    listaSuma=None
 
     def __init__(self, datos, cabeceras):
         self.datos=datos
@@ -47,11 +59,11 @@ class Procesar:
         global lista
         global listaf
         global listagrupos
-        global listaPrevSuma
+        global listaSuma
         lista=linked_list()
         listaf=linked_list()
         listagrupos=linked_list()
-        listaPrevSuma=linked_list()
+        listaSuma=linked_list()
         
 
     def imprimir(self):
@@ -68,7 +80,7 @@ class Procesar:
             aux = dato(i.dato.id,cambio,i.dato.x,i.dato.y)
             lista.append(aux)
 
-    def buscar(self):
+    def buscarGrupos(self):
         #print(lista.searchxyz(2, 3 ,2))
         ids=len(self.cabeceras)
         for id in range(int(ids)):
@@ -121,7 +133,7 @@ class Procesar:
                     ccn=0
                 gg+=1
         #self.sumar()
-        self.gruposFrecuencias()
+        #self.gruposFrecuencias()
         #print(listaf)
     '''    
     def frecuencia(self, id, n, f):
@@ -152,7 +164,7 @@ class Procesar:
         #print(listagrupos) 
         #print(self.obtenerNgrupos(0))  
         #print(self.obtenerFrecuenciaGrupo(0,3))     
-        self.sumar()
+        #self.sumar()
                     
     def sumar(self):
         idm=len(self.cabeceras)
@@ -174,17 +186,20 @@ class Procesar:
                                 break
                     if filaIndividual==True:
                         a=int(self.datos.searchxy(idmatriz,ff,y).dato.numero)
-                    print(a)
+                    aux=reducir(idmatriz,i,i,y,a)
+                    listaSuma.append(aux)
+                    #print(a)
+        #print(listaSuma)
 
 
-                '''
-                f=self.obtenerFrecuenciaGrupo(idmatriz,i)
-                if f>1:
-                    for x in range(1, f):
-                        for j in listaf.iterar():
-                            if j.dato.g==i and j.dato.id==idmatriz:
+        '''
+        f=self.obtenerFrecuenciaGrupo(idmatriz,i)
+        if f>1:
+            for x in range(1, f):
+                for j in listaf.iterar():
+                    if j.dato.g==i and j.dato.id==idmatriz:
 
-                 '''   
+            '''   
                     
                     #print(self.datos.searchxy(idmatriz,ad.dato.f2,1))
 

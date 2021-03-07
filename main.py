@@ -7,6 +7,8 @@ from Procesar import Procesar
 
 #----------------------------------------------VARIABLES GLOBALES--------------------------------------------
 ruta="entrada1.xml"
+cabeceras=None
+datos=None
 
 #-------------------------------------------------MENU-------------------------------------------------------
 def CargarArchivo():
@@ -16,15 +18,30 @@ def CargarArchivo():
 
 def ProcesarArchivo():
     if ruta!="":
+        print("\n---------------------------------PROCESAR ARCHIVO---------------------------------\n")
+        global cabeceras
+        global datos
+        print(" > Leyendo archivo...")
         archivo = Leer(ruta)
+        print(" > Obteniendo información de las matrices...")
         archivo.ObtenerCabeceras()
         cabeceras = archivo.getCabeceras()
         archivo.extraerDatos()
-        listaCircular=archivo.getLista()
-        procesar=Procesar(listaCircular,cabeceras)
+        print(" > Datos extraídos del archivo")
+        datos=archivo.getLista()
+        print(" > Procesando datos...")
+        procesar=Procesar(datos,cabeceras)
+        print(" > Calculando matrices de patrones de acceso...")
         procesar.obtenerPatronesAcceso()
-        procesar.buscar()
+        print(" > Formando grupos...")
+        procesar.buscarGrupos()
+        procesar.gruposFrecuencias()
+        print(" > Realizando suma de tuplas...")
+        procesar.sumar()
+        print(" > Matrices reducidas de frecuencias de accesos obtenidas")
+        print(" > Archivo procesado con éxito")
         
+        input("\n- PRESIONE ENTER PARA CONTINUAR...")
         #procesar.imprimir()
     else:
         print("  > ERROR: No se ha cargado ningún archivo")
@@ -52,11 +69,13 @@ def MostrarEstudiante():
 
 def GenerarGrafica():
     if ruta!="":
+        '''
         archivo = Leer(ruta)
         archivo.ObtenerCabeceras()
         cabeceras = archivo.getCabeceras()
         archivo.extraerDatos()
-        listaCircular=archivo.getLista()
+        datos=archivo.getLista()
+        '''
         z=len(cabeceras)+1
         opcion=0
         while opcion!=z:
@@ -75,7 +94,7 @@ def GenerarGrafica():
                     input(" - PRESIONE ENTER PARA CONTINUAR...")
                 else:
                     if opcion!=z:
-                        graficar(opcion,listaCircular,cabeceras)
+                        graficar(opcion,datos,cabeceras)
             except:
                 print("\n > Opción inválida...")
                 input(" - PRESIONE ENTER PARA CONTINUAR...")
