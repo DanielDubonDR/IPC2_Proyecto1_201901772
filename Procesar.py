@@ -29,7 +29,7 @@ class frecuencias:
         self.frecuencia = frecuencia
     
     def __str__(self):
-        String = str("id: ") + str(self.id)+ str("\ngrupo: ") + str(self.grupo) + str("\nfrecuencia: ") + str(self.frecuencia)+  str("\n")
+        String = str("id: ") + str(self.id)+ str("\nfila: ") + str(self.grupo) + str("\nfrecuencia: ") + str(self.frecuencia)+  str("\n")
         return String
 
 class Procesar:
@@ -80,17 +80,19 @@ class Procesar:
                         break
                 if repetido==True:
                     continue
-                
+                ccn=0
                 for j in range(1,aux-i):
                     cont=0
                     for mm in range(1,int(m)+1):
                         if int(lista.searchxyz(id, i ,mm).dato.numero)==int(lista.searchxyz(id, (j+i) ,mm).dato.numero):
                             cont+=1
+                            
                             '''
                             string = str("id ")+str(id)+str(" pares ") +str(i)+str(",")+str(mm)+str(" con ")+str(j+i)+str(",")+str(mm)
                             print(string)
                             '''         
                     if cont==int(m):
+                        ccn+=1
                         '''
                         string = str("se encontro coincidencias en la matriz ")+str(id)+str(" filas ")+str(i)+str(" con ")+str(j+i)
                         print(string)
@@ -103,6 +105,15 @@ class Procesar:
                     
                         aux1=lsreducir(id, i,(j+i))
                         listaf.append(aux1)
+                if ccn==0:
+                    '''
+                    string = str("NO se encontro coincidencias en la matriz ")+str(id)+str(" fila ")+str(i)
+                    print(string)
+                    '''
+                    ags=lsreducir(id, i,i)
+                    listaf.append(ags)
+                elif ccn>0:
+                    ccn=0
         #self.sumar()
         self.gruposFrecuencias()
         #print(listaf)
@@ -141,7 +152,8 @@ class Procesar:
                             c+=1
                 #st=str("id ")+str(idmatriz)+str(" en ")+str(i)+str(" se repite ")+str(c)    
                 #print(st)
-                aux=frecuencias(idmatriz,i,c)
-                listagrupos.append(aux)
+                if c>0:
+                    aux=frecuencias(idmatriz,i,c)
+                    listagrupos.append(aux)
         print(listagrupos)        
                     
