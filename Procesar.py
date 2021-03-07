@@ -23,13 +23,14 @@ class lsreducir:
         return String
 
 class frecuencias:
-    def __init__(self, id, grupo, frecuencia):
+    def __init__(self, id, g, grupo, frecuencia):
         self.id = id
+        self.g = g
         self.grupo = grupo
         self.frecuencia = frecuencia
     
     def __str__(self):
-        String = str("id: ") + str(self.id)+ str("\nfila: ") + str(self.grupo) + str("\nfrecuencia: ") + str(self.frecuencia)+  str("\n")
+        String = str("id: ") + str(self.id)+ str("\ngrupo: ") + str(self.g)+ str("\nfila: ") + str(self.grupo) + str("\nfrecuencia: ") + str(self.frecuencia)+  str("\n")
         return String
 
 class Procesar:
@@ -145,6 +146,7 @@ class Procesar:
         idm=len(self.cabeceras)
         for idmatriz in range(idm):
             n=self.cabeceras.search(idmatriz).dato.n
+            cont=1
             for i in range(1,int(n)+1):
                 c=0
                 for ad in listaf.iterar():
@@ -153,7 +155,8 @@ class Procesar:
                 #st=str("id ")+str(idmatriz)+str(" en ")+str(i)+str(" se repite ")+str(c)    
                 #print(st)
                 if c>0:
-                    aux=frecuencias(idmatriz,i,c)
+                    aux=frecuencias(idmatriz,cont,i,c)
                     listagrupos.append(aux)
+                    cont+=1
         print(listagrupos)        
                     
