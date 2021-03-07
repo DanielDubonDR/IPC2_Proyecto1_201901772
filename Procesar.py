@@ -20,7 +20,7 @@ class lsreducir:
         self.f2 = f2
     
     def __str__(self):
-        String = str("id: ") + str(self.id)+ str("\nf1: ")+ str("\ngrupo: ") + str(self.g) + str(self.f1) + str("\nf2: ") + str(self.f2)+  str("\n")
+        String = str("id: ") + str(self.id)+ str("\ngrupo: ") + str(self.g)+ str("\nf1: ") + str(self.f1) + str("\nf2: ") + str(self.f2)+  str("\n")
         return String
 
 class frecuencias:
@@ -149,18 +149,36 @@ class Procesar:
                     aux=frecuencias(idmatriz,cont,i,c)
                     listagrupos.append(aux)
                     cont+=1
-        print(listagrupos) 
-        print(self.obtenerNgrupos(0))  
-        print(self.obtenerFrecuenciaGrupo(0,3))     
+        #print(listagrupos) 
+        #print(self.obtenerNgrupos(0))  
+        #print(self.obtenerFrecuenciaGrupo(0,3))     
+        self.sumar()
                     
     def sumar(self):
         idm=len(self.cabeceras)
         for idmatriz in range(idm):
-            n=self.cabeceras.search(idmatriz).dato.n
             m=self.cabeceras.search(idmatriz).dato.m
-            for i in listaf.iterar():
-                if i.dato.id==idmatriz:
+            for i in range(1,self.obtenerNgrupos(idmatriz)+1):
+                for y in range(1,int(m)+1):
+                    a=0
+                    for j in listaf.iterar():
+                        if j.dato.id==idmatriz and j.dato.g==i:
+                            f=self.obtenerFrecuenciaGrupo(idmatriz,i)
+                            if f>1:
+                                a+=int(self.datos.searchxy(idmatriz,int(j.dato.f2),y).dato.numero)
+                            else:
+                                print()
+                    print(a)
 
+
+                '''
+                f=self.obtenerFrecuenciaGrupo(idmatriz,i)
+                if f>1:
+                    for x in range(1, f):
+                        for j in listaf.iterar():
+                            if j.dato.g==i and j.dato.id==idmatriz:
+
+                 '''   
                     
                     #print(self.datos.searchxy(idmatriz,ad.dato.f2,1))
 
@@ -177,4 +195,4 @@ class Procesar:
     def obtenerFrecuenciaGrupo(self, id, grupo):
         for i in listagrupos.iterar():
             if i.dato.id==id and i.dato.g==grupo:
-                return int(i.dato.frecuencia)-1
+                return int(i.dato.frecuencia)
