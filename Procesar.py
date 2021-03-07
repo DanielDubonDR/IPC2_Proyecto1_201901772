@@ -161,13 +161,19 @@ class Procesar:
             for i in range(1,self.obtenerNgrupos(idmatriz)+1):
                 for y in range(1,int(m)+1):
                     a=0
+                    ff=0
+                    filaIndividual=False
                     for j in listaf.iterar():
                         if j.dato.id==idmatriz and j.dato.g==i:
                             f=self.obtenerFrecuenciaGrupo(idmatriz,i)
                             if f>1:
                                 a+=int(self.datos.searchxy(idmatriz,int(j.dato.f2),y).dato.numero)
                             else:
-                                print()
+                                ff=int(j.dato.f2)
+                                filaIndividual=True
+                                break
+                    if filaIndividual==True:
+                        a=int(self.datos.searchxy(idmatriz,ff,y).dato.numero)
                     print(a)
 
 
