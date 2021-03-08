@@ -3,6 +3,7 @@ from graphviz import Digraph
 def graficar(id, datos, cabeceras):
     n=cabeceras.search(id-1).dato.n
     m=cabeceras.search(id-1).dato.m
+    name=str("Gráficas/")+str(cabeceras.search(id-1).dato.nombreMatriz)+str(".gv")
     s1=str(cabeceras.search(id-1).dato.nombreMatriz)+str(" n = ")+str(n)+str(" m = ")+str(m)
     dot = Digraph(comment='Grafica')
     dot.node('A', 'Matrices')
@@ -50,4 +51,4 @@ def graficar(id, datos, cabeceras):
 
     '''
     #print(dot.source)
-    dot.render('D://test-output/round-tble.gv', view=True, format="png")
+    dot.render(name, view=True, format="png")
