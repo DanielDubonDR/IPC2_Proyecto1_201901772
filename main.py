@@ -16,6 +16,7 @@ datos=None
 grupos=None
 matricesReducidas=None
 frecuencias=None
+procesado=False
 #----------------------------------------------FUNCIONES-----------------------------------------------------
 def clear():
     sistema = platform.system()
@@ -47,6 +48,7 @@ def ProcesarArchivo():
         global datos
         global grupos
         global matricesReducidas
+        global procesado
         archivo = Leer(ruta)
         archivo.ObtenerCabeceras()
         cabeceras = archivo.getCabeceras()
@@ -60,7 +62,7 @@ def ProcesarArchivo():
         procesar.sumar()
         grupos=procesar.getGrupos()
         matricesReducidas=procesar.getMReducidas()
-        
+        procesado=True
         input("\n- PRESIONE ENTER PARA CONTINUAR...")
         #procesar.imprimir()
     else:
@@ -69,7 +71,7 @@ def ProcesarArchivo():
 
 def EscribirArchivo():
     
-    if ruta!="":
+    if ruta!="" and procesado:
         clear()
         print("\n-----------------------------ESCRIBIR ARCHIVO SALIDA------------------------------\n")
         rt=str(input("- Escribir una ruta específica:\n  > "))
@@ -79,7 +81,7 @@ def EscribirArchivo():
             archivo(grupos,matricesReducidas,cabeceras,rt)
         input("\n- PRESIONE ENTER PARA CONTINUAR...")
     else:
-        print("  > ERROR: No se ha cargado ningún archivo")
+        print("  > ERROR: No se ha cargado o procesado ningún archivo")
         input("\n- PRESIONE ENTER PARA CONTINUAR...")
 
 def MostrarEstudiante():
@@ -94,7 +96,7 @@ def MostrarEstudiante():
 
 def GenerarGrafica():
     
-    if ruta!="":
+    if ruta!="" and procesado:
         '''
         archivo = Leer(ruta)
         archivo.ObtenerCabeceras()
@@ -128,7 +130,7 @@ def GenerarGrafica():
                 print("\n > Opción inválida...")
                 input(" - PRESIONE ENTER PARA CONTINUAR...")
     else:
-        print("  > ERROR: No se ha cargado ningún archivo")
+        print("  > ERROR: No se ha cargado o procesado ningún archivo ")
         input("\n- PRESIONE ENTER PARA CONTINUAR...")
 
 def salir():
