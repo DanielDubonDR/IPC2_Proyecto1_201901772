@@ -9,7 +9,7 @@ import os
 
 
 #----------------------------------------------VARIABLES GLOBALES--------------------------------------------
-ruta="entrada5.xml"
+ruta=""
 cabeceras=None
 cabecerasCircular=None
 datos=None
@@ -25,13 +25,23 @@ def clear():
         os.system("clear")
 #-------------------------------------------------MENU-------------------------------------------------------
 def CargarArchivo():
+    clear()
     global ruta
-    print(" > ERROR: No se seleccionó ningún archivo o el archivo no cumple con el formato")
-    input("\n- PRESIONE ENTER PARA CONTINUAR...")
+    print("\n------------------------------------CARGAR ARCHIVO------------------------------------\n")
+    print("  > Ingrese la ruta del archivo:")
+    ruta=str(input("  > "))
+    if os.path.isfile(ruta):
+        print("  > Archivo cargado")
+        input("\n- PRESIONE ENTER PARA CONTINUAR...")
+    else:
+        print("  > ERROR: El archivo no existe en la ruta especificada")
+        ruta=""
+        input("\n- PRESIONE ENTER PARA CONTINUAR...")
 
 def ProcesarArchivo():
-    clear()
+    
     if ruta!="":
+        clear()
         print("\n---------------------------------PROCESAR ARCHIVO---------------------------------\n")
         global cabeceras
         global datos
@@ -58,8 +68,9 @@ def ProcesarArchivo():
         input("\n- PRESIONE ENTER PARA CONTINUAR...")
 
 def EscribirArchivo():
-    clear()
+    
     if ruta!="":
+        clear()
         print("\n-----------------------------ESCRIBIR ARCHIVO SALIDA------------------------------\n")
         rt=str(input("- Escribir una ruta específica:\n  > "))
         if rt=="":
@@ -73,17 +84,13 @@ def EscribirArchivo():
 
 def MostrarEstudiante():
     clear()
-    if ruta!="":
-        print("\n-------------------------------DATOS DEL ESTUDIANTE-------------------------------\n")
-        print("  > Daniel Reginaldo Dubon Rodriguez")
-        print("  > 201901772")
-        print("  > Introduccion a la Progrmacion y Computacion 2 Seccion \"A\"")
-        print("  > Ingenieria en Ciencias y Sistemas")
-        print("  > 5to Semestre")
-        input("\n- PRESIONE ENTER PARA CONTINUAR...")
-    else:
-        print("  > ERROR: No se ha cargado ningún archivo")
-        input("\n- PRESIONE ENTER PARA CONTINUAR...")
+    print("\n-------------------------------DATOS DEL ESTUDIANTE-------------------------------\n")
+    print("  > Daniel Reginaldo Dubon Rodriguez")
+    print("  > 201901772")
+    print("  > Introduccion a la Progrmacion y Computacion 2 Seccion \"A\"")
+    print("  > Ingenieria en Ciencias y Sistemas")
+    print("  > 5to Semestre")
+    input("\n- PRESIONE ENTER PARA CONTINUAR...")
 
 def GenerarGrafica():
     
