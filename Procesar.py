@@ -54,6 +54,7 @@ class Procesar:
     listaSuma=None
 
     def __init__(self, datos, cabeceras):
+        print(" > Procesando datos...")
         self.datos=datos
         self.cabeceras=cabeceras
         global lista
@@ -71,6 +72,7 @@ class Procesar:
         graficar(2,lista, self.cabeceras)
 
     def obtenerPatronesAcceso(self):
+        print(" > Calculando matrices de patrones de acceso...")
         for i in self.datos.iterar():
             cambio=int(i.dato.numero)
             if cambio>0:
@@ -81,6 +83,7 @@ class Procesar:
             lista.append(aux)
 
     def buscarGrupos(self):
+        print(" > Formando grupos...")
         #print(lista.searchxyz(2, 3 ,2))
         ids=len(self.cabeceras)
         for id in range(int(ids)):
@@ -167,6 +170,7 @@ class Procesar:
         #self.sumar()
                     
     def sumar(self):
+        print(" > Realizando suma de tuplas...")
         idm=len(self.cabeceras)
         for idmatriz in range(idm):
             m=self.cabeceras.search(idmatriz).dato.m
@@ -189,6 +193,8 @@ class Procesar:
                     aux=reducir(idmatriz,i,i,y,a)
                     listaSuma.append(aux)
                     #print(a)
+        print(" > Matrices reducidas de frecuencias de accesos obtenidas")
+        print(" > Archivo procesado con éxito")
         #print(listaSuma)
 
 

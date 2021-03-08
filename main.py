@@ -9,8 +9,9 @@ import os
 
 
 #----------------------------------------------VARIABLES GLOBALES--------------------------------------------
-ruta="entrada2.xml"
+ruta="entrada5.xml"
 cabeceras=None
+cabecerasCircular=None
 datos=None
 grupos=None
 matricesReducidas=None
@@ -36,27 +37,19 @@ def ProcesarArchivo():
         global datos
         global grupos
         global matricesReducidas
-        print(" > Leyendo archivo...")
         archivo = Leer(ruta)
-        print(" > Obteniendo información de las matrices...")
         archivo.ObtenerCabeceras()
         cabeceras = archivo.getCabeceras()
+        cabeceras = archivo.getCabecerasCircular()
         archivo.extraerDatos()
-        print(" > Datos extraídos del archivo")
         datos=archivo.getLista()
-        print(" > Procesando datos...")
         procesar=Procesar(datos,cabeceras)
-        print(" > Calculando matrices de patrones de acceso...")
         procesar.obtenerPatronesAcceso()
-        print(" > Formando grupos...")
         procesar.buscarGrupos()
         procesar.gruposFrecuencias()
-        print(" > Realizando suma de tuplas...")
         procesar.sumar()
-        print(" > Matrices reducidas de frecuencias de accesos obtenidas")
         grupos=procesar.getGrupos()
         matricesReducidas=procesar.getMReducidas()
-        print(" > Archivo procesado con éxito")
         
         input("\n- PRESIONE ENTER PARA CONTINUAR...")
         #procesar.imprimir()
