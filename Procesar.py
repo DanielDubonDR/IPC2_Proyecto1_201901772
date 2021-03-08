@@ -217,3 +217,9 @@ class Procesar:
         for i in listagrupos.iterar():
             if i.dato.id==id and i.dato.g==grupo:
                 return int(i.dato.frecuencia)
+
+    def getGrupos(self):
+        return listagrupos
+
+    def getMReducidas(self):
+        return listaSuma

@@ -2,14 +2,26 @@
 from LeerXML import Leer
 from Funciones.Graficar import graficar
 from Procesar import Procesar
+from Funciones.GenerarArchivo import archivo
+import platform
+import os
 #----------------------------------------------------CLASES--------------------------------------------------
 
 
 #----------------------------------------------VARIABLES GLOBALES--------------------------------------------
-ruta="entrada1.xml"
+ruta="entrada2.xml"
 cabeceras=None
 datos=None
-
+grupos=None
+matricesReducidas=None
+frecuencias=None
+#----------------------------------------------FUNCIONES-----------------------------------------------------
+def clear():
+    sistema = platform.system()
+    if str(sistema)=="Windows":
+        os.system("cls")
+    else:
+        os.system("clear")
 #-------------------------------------------------MENU-------------------------------------------------------
 def CargarArchivo():
     global ruta
@@ -17,10 +29,13 @@ def CargarArchivo():
     input("\n- PRESIONE ENTER PARA CONTINUAR...")
 
 def ProcesarArchivo():
+    clear()
     if ruta!="":
         print("\n---------------------------------PROCESAR ARCHIVO---------------------------------\n")
         global cabeceras
         global datos
+        global grupos
+        global matricesReducidas
         print(" > Leyendo archivo...")
         archivo = Leer(ruta)
         print(" > Obteniendo información de las matrices...")
@@ -39,6 +54,8 @@ def ProcesarArchivo():
         print(" > Realizando suma de tuplas...")
         procesar.sumar()
         print(" > Matrices reducidas de frecuencias de accesos obtenidas")
+        grupos=procesar.getGrupos()
+        matricesReducidas=procesar.getMReducidas()
         print(" > Archivo procesado con éxito")
         
         input("\n- PRESIONE ENTER PARA CONTINUAR...")
@@ -48,13 +65,21 @@ def ProcesarArchivo():
         input("\n- PRESIONE ENTER PARA CONTINUAR...")
 
 def EscribirArchivo():
+    clear()
     if ruta!="":
-        print("hacer algo")
+        print("\n-----------------------------ESCRIBIR ARCHIVO SALIDA------------------------------\n")
+        rt=str(input("- Escribir una ruta específica:\n  > "))
+        if rt=="":
+            print("  > ERROR: Ruta no válida")
+        else:
+            archivo(grupos,matricesReducidas,cabeceras,rt)
+        input("\n- PRESIONE ENTER PARA CONTINUAR...")
     else:
         print("  > ERROR: No se ha cargado ningún archivo")
         input("\n- PRESIONE ENTER PARA CONTINUAR...")
 
 def MostrarEstudiante():
+    clear()
     if ruta!="":
         print("\n-------------------------------DATOS DEL ESTUDIANTE-------------------------------\n")
         print("  > Daniel Reginaldo Dubon Rodriguez")
@@ -68,6 +93,7 @@ def MostrarEstudiante():
         input("\n- PRESIONE ENTER PARA CONTINUAR...")
 
 def GenerarGrafica():
+    
     if ruta!="":
         '''
         archivo = Leer(ruta)
@@ -79,6 +105,7 @@ def GenerarGrafica():
         z=len(cabeceras)+1
         opcion=0
         while opcion!=z:
+            clear()
             cont=0
             String=""
             print("\n--------------------------------SELECCIONAR GRÁFICA-------------------------------")
@@ -95,6 +122,8 @@ def GenerarGrafica():
                 else:
                     if opcion!=z:
                         graficar(opcion,datos,cabeceras)
+                        print("\n > Gráfica generada con éxito")
+                        input(" - PRESIONE ENTER PARA CONTINUAR...")
             except:
                 print("\n > Opción inválida...")
                 input(" - PRESIONE ENTER PARA CONTINUAR...")
@@ -108,6 +137,7 @@ def salir():
 def menu():
     opcion=0
     while opcion!=6:
+        clear()
         print("\n----------------------------------MENÚ PRINCIPAL----------------------------------\n")
         print(" 1. Cargar archivo")
         print(" 2. Procesar archivo")
