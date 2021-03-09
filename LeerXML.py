@@ -76,6 +76,12 @@ class Leer:
                         dt = matriz.getElementsByTagName("dato")[cont]
                         xx=dt.getAttribute("x")
                         y=dt.getAttribute("y")
+                        if int(xx)>int(n):
+                            s=str(" - ERROR: fila: ")+str(xx)+str(" fuera del rango de la matriz establecida")
+                            print(s)
+                        if int(y)>int(m):
+                            s=str(" - ERROR: columna: ")+str(y)+str(" fuera del rango de la matriz establecida")
+                            print(s)
                         aux = dato(i.dato.id,dt.firstChild.data,(xx),(y))
                         listaM.append(aux)
                         cont += 1

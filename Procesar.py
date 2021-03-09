@@ -75,7 +75,7 @@ class Procesar:
         print(" > Calculando matrices de patrones de acceso...")
         for i in self.datos.iterar():
             cambio=int(i.dato.numero)
-            if cambio>0:
+            if cambio!=0:
                 cambio = 1
             else:
                 cambio = 0
