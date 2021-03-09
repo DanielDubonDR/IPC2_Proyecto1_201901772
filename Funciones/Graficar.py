@@ -24,31 +24,5 @@ def graficar(id, datos, cabeceras):
     for i in range(1,magnitud+1):
         dot.edge(str(i),str(i+int(m)))
 
-    '''
-    cont2=0
-    for i in datos.iterar():
-        if cont2<int(m):
-            if i.dato.id==(id-1):
-                dot.edge('B',str(i.dato.numero))
-        cont2+=1
-        
-    
-    
-    cont3=1
-    for i in datos.iterar():
-        if cont3<=magnitud:
-            if i.dato.id==(id-1):
-                dot.edge(str(cont3),str(i.dato.numero+int(m)))
-        cont3+=1
-    
-    '''
-    '''
-    for x in range(1,m):
-        dot.edge('B',str(i.dato.numero+m))
-
-    for x in range(1,magnitud):
-        dot.edge(str(cont),str(i.dato.numero+m))
-
-    '''
     #print(dot.source)
     dot.render(name, view=True, format="png")

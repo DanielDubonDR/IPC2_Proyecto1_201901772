@@ -107,16 +107,10 @@ class Procesar:
                         if int(lista.searchxyz(id, i ,mm).dato.numero)==int(lista.searchxyz(id, (j+i) ,mm).dato.numero):
                             cont+=1
                             
-                            '''
-                            string = str("id ")+str(id)+str(" pares ") +str(i)+str(",")+str(mm)+str(" con ")+str(j+i)+str(",")+str(mm)
-                            print(string)
-                            '''         
+                                  
                     if cont==int(m):
                         ccn+=1
-                        '''
-                        string = str("se encontro coincidencias en la matriz ")+str(id)+str(" grupo ")+str(gg)+str(" filas ")+str(i)+str(" con ")+str(j+i)
-                        print(string)
-                        '''
+                        
 
                         if agregarMismo==True:
                             ags=lsreducir(id,gg, i,i)

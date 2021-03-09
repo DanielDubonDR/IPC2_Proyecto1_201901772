@@ -60,7 +60,7 @@ class Leer:
             cabeceras.append(aux)
             cabecerasCircular.append(aux)
             contador += 1
-        #print(cabeceras)
+
 
     def extraerDatos(self):
         for matriz in matrices:
@@ -85,13 +85,10 @@ class Leer:
                         aux = dato(i.dato.id,dt.firstChild.data,(xx),(y))
                         listaM.append(aux)
                         cont += 1
-        #print(listaM)
+        
         print(" > Datos extraídos del archivo")
        
-    '''
-    iniciar()                        
-    ObtenerCabeceras()
-    '''
+   
     def verificarOrden(self):
         print(" > Verificando si los datos estan ordenados...")
         desordenado=False
@@ -135,7 +132,7 @@ class Leer:
                     else:
                         listaOrdenada.append(axx)
         print(" > Datos ordenados")
-        #print(listaOrdenada)
+        
 
     def getCabeceras(self):
         return cabeceras

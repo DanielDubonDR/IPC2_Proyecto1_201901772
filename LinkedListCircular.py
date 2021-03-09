@@ -1,15 +1,4 @@
-'''
-class cliente:
-    def __init__(self, id, nombre, no_habitacion):
-        self.id = id
-        self.nombre = nombre
-        self.no_habitacion = no_habitacion
-
-    def __str__(self):
-        String = str("id: ") + str(self.id) + str("\nNombre: ") + str(self.nombre) + \
-            str("\nHabitación No. ") + str(self.no_habitacion)+str("\n")
-        return String
-'''        
+      
 
 class node:
     def __init__(self, dato=None, next=None):
@@ -71,20 +60,3 @@ class linked_list_circular:
             String += str(node)
         return String
 
-'''
-c1 = cliente(0,"Estuardo Zapeta", 101)
-c2 = cliente(1,"Marco López", 103)
-c3 = cliente(2,"Josué Armas", 204)
-c4 = cliente(3,"Gladis Olmos", 302)
-
-lista = linked_list_circular()
-lista.append(c1)
-lista.append(c2)
-lista.append(c3)
-lista.append(c4)
-
-for i in lista.iterar():
-    print(i)
-
-print(len(lista))
-'''
